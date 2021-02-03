@@ -1,0 +1,3 @@
+[submodule "Assets/GUP"]
+	path = Assets/GUP
+	url = git@github.com:Banemus/GUP.git
