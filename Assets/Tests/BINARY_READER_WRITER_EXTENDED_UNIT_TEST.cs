@@ -50,7 +50,7 @@ public class BINARY_READER_WRITER_EXTENDED_UNIT_TEST
             {
                 using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
                 {
-                    Assert.AreEqual( "test2", reader.ReadString() );
+                    Assert.AreEqual( "test", reader.ReadString() );
                 }
             }
         }
