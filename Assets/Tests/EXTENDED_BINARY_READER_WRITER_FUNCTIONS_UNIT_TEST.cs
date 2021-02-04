@@ -159,9 +159,9 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             {
                 using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
                 {
-                    Assert.Equals( reader.ReadDateTime(), date_time );
-                    Assert.Equals( reader.ReadDateTime(), empty_date_time );
-                    Assert.Equals( reader.ReadDateTime(), date_time );
+                    Assert.AreEqual( reader.ReadDateTime(), date_time );
+                    Assert.AreEqual( reader.ReadDateTime(), empty_date_time );
+                    Assert.AreEqual( reader.ReadDateTime(), date_time );
                 }
             }
         }
@@ -193,9 +193,9 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             {
                 using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
                 {
-                    Assert.Equals( reader.ReadTimeSpan(), time_span );
-                    Assert.Equals( reader.ReadTimeSpan(), empty_time_span );
-                    Assert.Equals( reader.ReadTimeSpan(), time_span );
+                    Assert.AreEqual( reader.ReadTimeSpan(), time_span );
+                    Assert.AreEqual( reader.ReadTimeSpan(), empty_time_span );
+                    Assert.AreEqual( reader.ReadTimeSpan(), time_span );
                 }
             }
         }
