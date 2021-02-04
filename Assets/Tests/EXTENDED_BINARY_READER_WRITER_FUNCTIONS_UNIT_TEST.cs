@@ -16,6 +16,9 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
     {
         ReadInt32TableTest();   
         ReadStringTableTest();
+        ReadGuidTest();
+        ReadDateTimeTest();
+        ReadTimeSpanTest();
     }
     
     // ~~
@@ -91,6 +94,108 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
                     Assert.IsTrue( reader.ReadStringTable().SequenceEqual( filled_table ) );
                     Assert.IsTrue( reader.ReadStringTable().SequenceEqual( empty_table ) );
                     Assert.IsTrue( reader.ReadStringTable().SequenceEqual( filled_table ) );
+                }
+            }
+        }
+    }
+
+    // ~~
+
+    void ReadGuidTest()
+    {
+        using ( MemoryStream stream = new MemoryStream() )
+        {
+            System.Guid
+                guid,
+                empty_guid;
+
+            guid = System.Guid.NewGuid();
+            empty_guid = System.Guid.Empty;
+
+            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            {
+                writer.Write( guid );
+                writer.Write( empty_guid );
+                writer.Write( guid );
+            }
+
+            stream.Flush();
+
+            using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
+            {
+                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                {
+                    Assert.IsTrue( reader.ReadGuid().Equals( guid ) );
+                    Assert.IsTrue( reader.ReadGuid().Equals( empty_guid ) );
+                    Assert.IsTrue( reader.ReadGuid().Equals( guid ) );
+                }
+            }
+        }
+    }
+
+    // ~~
+
+    void ReadDateTimeTest()
+    {
+        using ( MemoryStream stream = new MemoryStream() )
+        {
+            System.DateTime
+                date_time,
+                empty_date_time;
+
+            date_time = System.DateTime.Now;
+            empty_date_time = new System.DateTime();
+
+            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            {
+                writer.Write( date_time );
+                writer.Write( empty_date_time );
+                writer.Write( date_time );
+            }
+
+            stream.Flush();
+
+            using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
+            {
+                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                {
+                    Assert.Equals( reader.ReadDateTime(), date_time );
+                    Assert.Equals( reader.ReadDateTime(), empty_date_time );
+                    Assert.Equals( reader.ReadDateTime(), date_time );
+                }
+            }
+        }
+    }
+
+    // ~~
+
+    void ReadTimeSpanTest()
+    {
+        using ( MemoryStream stream = new MemoryStream() )
+        {
+            System.TimeSpan
+                time_span,
+                empty_time_span;
+
+            time_span = System.DateTime.Now - System.DateTime.UtcNow;
+            empty_time_span = new System.TimeSpan();
+
+            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            {
+                writer.Write( time_span );
+                writer.Write( empty_time_span );
+                writer.Write( time_span );
+            }
+
+            stream.Flush();
+
+            using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
+            {
+                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                {
+                    Assert.Equals( reader.ReadTimeSpan(), time_span );
+                    Assert.Equals( reader.ReadTimeSpan(), empty_time_span );
+                    Assert.Equals( reader.ReadTimeSpan(), time_span );
                 }
             }
         }
