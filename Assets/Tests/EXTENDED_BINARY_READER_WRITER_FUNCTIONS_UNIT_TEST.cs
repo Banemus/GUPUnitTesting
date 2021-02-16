@@ -44,7 +44,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             filled_table = new int[]{ 0, 1, 2, 3, 4 };
             empty_table = new int[ 0 ];
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( filled_table );
                 writer.Write( empty_table );
@@ -55,7 +55,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.IsTrue( reader.ReadInt32Table().SequenceEqual( filled_table ) );
                     Assert.IsTrue( reader.ReadInt32Table().SequenceEqual( empty_table ) );
@@ -78,7 +78,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             filled_table = new string[]{ "test0", "test1", "test2", "test3", "test4" };
             empty_table = new string[ 0 ];
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( filled_table );
                 writer.Write( empty_table );
@@ -89,7 +89,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.IsTrue( reader.ReadStringTable().SequenceEqual( filled_table ) );
                     Assert.IsTrue( reader.ReadStringTable().SequenceEqual( empty_table ) );
@@ -112,7 +112,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             guid = System.Guid.NewGuid();
             empty_guid = System.Guid.Empty;
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( guid );
                 writer.Write( empty_guid );
@@ -123,7 +123,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.IsTrue( reader.ReadGuid().Equals( guid ) );
                     Assert.IsTrue( reader.ReadGuid().Equals( empty_guid ) );
@@ -146,7 +146,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             date_time = System.DateTime.Now;
             empty_date_time = new System.DateTime();
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( date_time );
                 writer.Write( empty_date_time );
@@ -157,7 +157,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.AreEqual( reader.ReadDateTime(), date_time );
                     Assert.AreEqual( reader.ReadDateTime(), empty_date_time );
@@ -180,7 +180,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
             time_span = System.DateTime.Now - System.DateTime.UtcNow;
             empty_time_span = new System.TimeSpan();
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( time_span );
                 writer.Write( empty_time_span );
@@ -191,7 +191,7 @@ public class EXTENDED_BINARY_READER_WRITER_FUNCTIONS_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.AreEqual( reader.ReadTimeSpan(), time_span );
                     Assert.AreEqual( reader.ReadTimeSpan(), empty_time_span );

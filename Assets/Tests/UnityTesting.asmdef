@@ -1,7 +1,8 @@
 {
     "name": "UnitTesting",
     "references": [
-        "GUPAssembly"
+        "GUPAssembly",
+        "GUPCAssembly"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

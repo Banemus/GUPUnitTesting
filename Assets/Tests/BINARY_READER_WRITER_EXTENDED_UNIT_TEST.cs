@@ -39,7 +39,7 @@ public class BINARY_READER_WRITER_EXTENDED_UNIT_TEST
 
             test = "test";
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( test );
             }
@@ -48,7 +48,7 @@ public class BINARY_READER_WRITER_EXTENDED_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.AreEqual( "test", reader.ReadString() );
                 }
@@ -67,7 +67,7 @@ public class BINARY_READER_WRITER_EXTENDED_UNIT_TEST
 
             test = string.Empty;
 
-            using( BINARY_WRITER_EXTENDED writer = new BINARY_WRITER_EXTENDED( stream ) )
+            using( IO_BINARY_WRITER_EXTENDED writer = new IO_BINARY_WRITER_EXTENDED( stream ) )
             {
                 writer.Write( test );
             }
@@ -76,7 +76,7 @@ public class BINARY_READER_WRITER_EXTENDED_UNIT_TEST
 
             using( MemoryStream out_stream = new MemoryStream( stream.GetBuffer() ) )
             {
-                using ( BINARY_READER_EXTENDED reader = new BINARY_READER_EXTENDED( out_stream ) )
+                using ( IO_BINARY_READER_EXTENDED reader = new IO_BINARY_READER_EXTENDED( out_stream ) )
                 {
                     Assert.AreEqual( test, reader.ReadString() );
                 }

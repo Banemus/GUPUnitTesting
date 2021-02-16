@@ -57,11 +57,11 @@ public class EXTENSION_METHODS_LIST_UNIT_TEST
 
         int_table = new List<int>( new int[]{ 0, 1, 2, 3, 4, 5, 6 } );
 
-        int_table.RemoveFast( 2 );
+        int_table.RemoveAtFast( 2 );
 
         Assert.IsTrue ( int_table.SequenceEqual( new int[]{ 0, 1, 6, 3, 4, 5 } ) );
 
-        int_table.RemoveFast( 3 );
+        int_table.RemoveAtFast( 3 );
 
         Assert.IsTrue ( int_table.SequenceEqual( new int[]{ 0, 1, 6, 5, 4 } ) );
 
@@ -69,12 +69,12 @@ public class EXTENSION_METHODS_LIST_UNIT_TEST
 
         Assert.IsTrue ( int_table.SequenceEqual( new int[]{ 0, 1, 6, 5, 4, 7 } ) );
 
-        int_table.RemoveFast( 0 );
-        int_table.RemoveFast( 0 );
-        int_table.RemoveFast( 0 );
-        int_table.RemoveFast( 0 );
-        int_table.RemoveFast( 0 );
-        int_table.RemoveFast( 0 );
+        int_table.RemoveAtFast( 0 );
+        int_table.RemoveAtFast( 0 );
+        int_table.RemoveAtFast( 0 );
+        int_table.RemoveAtFast( 0 );
+        int_table.RemoveAtFast( 0 );
+        int_table.RemoveAtFast( 0 );
 
         Assert.IsEmpty( int_table );
 
