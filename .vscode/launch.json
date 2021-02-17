@@ -7,7 +7,7 @@
         {
             "name": "Unity Editor",
             "type": "unity",
-            "path": "/home/craftypotions/Develop/CraftyPotionsApp/Library/EditorInstance.json",
+            "path": "/Develop/GUP/Library/EditorInstance.json",
             "request": "launch"
         },
         {
